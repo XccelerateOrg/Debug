@@ -60,7 +60,7 @@ app.post(
 app.post(
   "/login",
   passportFunctions.authenticate("local-login", {
-    successRedirect: "/todolist",
+    successRedirect: "/debug",
     failureRedirect: "/error",
   })
 );
@@ -76,7 +76,7 @@ app.get(
 app.get(
   "/auth/gmail/callback",
   passportFunctions.authenticate("google", {
-    successRedirect: "/todolist",
+    successRedirect: "/debug",
     failureRedirect: "/error",
   })
 );
@@ -93,21 +93,23 @@ app.get(
 app.get(
   "/auth/facebook/callback",
   passportFunctions.authenticate("facebook", {
-    successRedirect: "/todolist",
+    successRedirect: "/debug",
     failureRedirect: "/error",
   })
 );
 
-app.get("/todolist", isLoggedIn, (request, response) => {
-  response.render("todolist");
-});
 app.get("/", (request, response) => {
   response.render("home");
+});
+
+app.get("/debug", (request, response) => {
+  response.render("debug");
 });
 
 app.get("/error", (request, response) => {
   response.render("error");
 });
+
 app.listen(3000, () => {
   console.log("app listening on port 3000");
 });
