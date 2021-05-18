@@ -90,13 +90,15 @@ app.get(
 );
 
 // After user authenticates, redirect to /
-app.get(
-  "/auth/facebook/callback",
-  passportFunctions.authenticate("facebook", {
-    successRedirect: "/debug",
-    failureRedirect: "/error",
-  })
-);
+// app.get(
+//   "/auth/facebook/callback",
+//   passportFunctions.authenticate("facebook", {
+//     successRedirect: "/debug",
+//     failureRedirect: "/error",
+//   })
+// );
+
+
 
 app.get("/", (request, response) => {
   response.render("home");

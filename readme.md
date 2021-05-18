@@ -8,7 +8,7 @@ The purpose of this repository is to create a RESTful application that utilizes
 - pg
 - express
 - passport.js
-- dotenv 
+- dotenv
 
 ### How to run this package
 
@@ -32,38 +32,40 @@ npm install
 nodemon app.js
 ```
 
-
 ### How it works :open_book:
 
 ## Checklist
 
-| User Story                        |   Task   | How it works | Done |
-| --------------------------------- | :------: | :----------: | ---- |
-| Users will be able to signup      |          |              |      |
-| Users will be able to login       | Frontend |              |      |
-| Users will be able to login       | Backend  |              |      |
-| Users will be able to add notes   | Frontend |              |      |
-| Users will be able to edit note   | Backend  |              |      |
-| Users will be able to get notes   | Frontend |              |      |
-| Users will be able to delete note | Backend  |              |      |
+| User Story                       |   Task   | How it works | Done |
+| -------------------------------- | :------: | :----------: | ---- |
+| Users will be able to signup     |          |              |      |
+| Users will be able to login      | Frontend |              |      |
+| Users will be able to login      | Backend  |              |      |
+| Users will be able to add bugs   | Frontend |              |      |
+| Users will be able to edit bug   | Backend  |              |      |
+| Users will be able to get bugs   | Frontend |              |      |
+| Users will be able to delete bug | Backend  |              |      |
 
 ## Checklist
 
-| Route                        | Method |     What it does     | Redirect | Object      |
-| ---------------------------- | :----: | :------------------: | -------- | ----------- |
-| /api/notes                   |  GET   |    Gets all notes    |          |             |
-| /api/users/:id/notes         |  GET   | Gets all users notes | notes    | notes, user |
-| /api/notes/:noteId           |  GET   |  Gets specific note  |          |             |
-| /api/users/:id/notes/:noteId |  GET   |  Gets specific note  | notes    | notes, user |
-| /api/users/:id/notes         |  POST  |      Posts note      | notes    | notes, user |
-| /api/users/:id/notes/:noteId |  PUT   |      Edits note      | notes    | notes, user |
-| /api/users/:id/notes/:noteId | DELETE |     Deletes note     | notes    | notes, user |
-| /api/users                   |  GET   |    Gets all users    |          |             |
-| /api/users/:id               |  GET   |  Gets specific user  |          |             |
-| /api/users                   |  POST  |      Adds user       | Login    |             |
-| /api/users/:id               |  PUT   |      Edits user      | Home     |             |
-| /login                       |  POST  | Login - verify user  | Notes    | notes, user |
-| /api/users/:id               | DELETE |     Deletes user     | Home     |             |
+| Route                              | Method |                     What it does                      | Redirect | Object     |
+| ---------------------------------- | :----: | :---------------------------------------------------: | -------- | ---------- |
+| /api/bugs                          |  GET   |                     Gets all bugs                     |          |            |
+| /api/users/:id/bugs                |  GET   |                  Gets all users bugs                  | bugs     | bugs, user |
+| /api/bugs/:bugId                   |  GET   |                   Gets specific bug                   |          |            |
+| /api/users/:id/bugs/:bugId         |  GET   |                   Gets specific bug                   | bugs     | bugs, user |
+| /api/users/:id/bugs                |  POST  |                       Posts bug                       | bugs     | bugs, user |
+| /api/users/:id/bugs/:bugId         |  PUT   |                       Edits bug                       | bugs     | bugs, user |
+| /api/users/:id/bugs/:bugId         | DELETE |                      Deletes bug                      | bugs     | bugs, user |
+| /api/users                         |  GET   |                    Gets all users                     |          |            |
+| /api/users/:id                     |  GET   |                  Gets specific user                   |          |            |
+| /api/users                         |  POST  |                       Adds user                       | Login    |            |
+| /api/users/:id                     |  PUT   |                      Edits user                       | Home     |            |
+| /login                             |  POST  |                  Login - verify user                  | bugs     | bugs, user |
+| /api/users/:id                     | DELETE |                     Deletes user                      | Home     |            |
+| implement callback for passport js |  get   | Allows us to pass in id into home page via handlebars | Home     | bugs, user |
+
+http://www.passportjs.org/docs/authenticate/
 
 ### User Stories :telescope:
 
