@@ -122,6 +122,7 @@ module.exports = BugService;
 // database.getAll();
 // database.get(1);
 // database.add({
+    // id: 4
 //   problem: "password authentication",
 //   whatshouldbe: "we should be able to run our queries",
 //   whatactuallyis:

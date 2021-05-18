@@ -1,6 +1,6 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable("bugs", (table) => {
-    table.increments();
+    table.increments("id");
     table.string("problem");
     table.string("whatshouldbe");
     table.string("whatactuallyis");

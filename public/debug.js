@@ -1,3 +1,7 @@
+// const { default: axios } = require("axios");
+
+// const { default: axios } = require("axios");
+
 console.log("This should load when you hit the debug page");
 
 $(() => {
@@ -20,6 +24,7 @@ $(() => {
             <td>User id: {{user_id}} id: {{id}}</td>
           </tr>
 {{/each}}`);
+  // this works
   const loadBugs = (data) => {
     console.log("received data", data);
     let template = bugTemplate({ bug: data });
@@ -27,52 +32,55 @@ $(() => {
     $("#tableBody").html(bugTemplate({ bug: data }));
   };
 
-  const bugs = [
-    {
-      id: 1,
-      problem: "not being able to render a page",
-      whatshouldbe: "render a page",
-      whatactuallyis:
-        "page doesn't show up when loading to the route",
-      hypothesis:
-        "maybe I have the method wrong, something wrong handlebars",
-      plan: "check the method in documentation",
-      user_id: 1,
-    },
-    {
-      id: 2,
-      problem: "not being able to run migrations and seeds",
-      whatshouldbe:
-        "should be able upload data after typing in knex seed:run --fileName.js",
-      whatactuallyis: "data doesn't upload error shows up ",
-      hypothesis: "knex migration is corrupt",
-      plan: "delete the two knex database tables",
-      user_id: 2,
-    },
-    {
-      id: 3,
-      problem:
-        "not being able to get access to .env variables",
-      whatshouldbe:
-        "be able to get access / connect to certain databases after importing it",
-      whatactuallyis:
-        "you're not able to actually import it",
-      hypothesis:
-        "you don't have the library connected in the right place",
-      plan: "double check where you have to dotenv imports",
-      user_id: 2,
-    },
-  ];
-  loadBugs(bugs);
+  // get route
+  // GET: /api/users/:userId/bugs
+  axios
+    .get(`api/users/2/bugs`)
+    .then((object) => {
+      console.log(object.data);
+      loadBugs(object.data);
+      //   loadBugs(object);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  // post route
+  // /api/bugs
+  //   $("#debuggingForm").submit((event) => {
+  //     event.preventDefault();
+  //     console.log($("input[name=problem]").val());
+  //     let problem = $("input[name=problem]").val();
+  //     console.log("Problem", problem);
+  //     let whatshouldbe = $("input[name=whatshouldbe]").val();
+  //     let whatactuallyis = $(
+  //       "input[name=whatactuallyis]"
+  //     ).val();
+  //     let hypothesis = $("input[name=hypothesis]").val();
+  //     let plan = $("input[name=plan]").val();
+  //     let debuggingObject = {
+  //       problem: problem,
+  //       whatshouldbe: whatshouldbe,
+  //       whatactuallyis: whatactuallyis,
+  //       hypothesis: hypothesis,
+  //       plan: plan,
+  //     };
+  //     console.log("New Debugging Object", debuggingObject);
+  //     axios
+  //       .post(`/api/bugs`, {
+  //         bug: debuggingObject,
+  //       })
+  //       .then((response) => {
+  //         console.log(response);
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error", error);
+  //       });
+  //   });
+
+  // edit route
+  // /api/bugs/:id
+
+  // delete route
+  // /api/bugs/:id
 });
-
-// =
-// associate specific elements with axios actions
-// handlebars template
-// adding event handlers to buttons
-
-// post event handler
-
-// edit event handler
-
-// delete event handler

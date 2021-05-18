@@ -48,6 +48,8 @@ class BugRouter {
   }
   post(request, response) {
     let bug = request.body;
+    // also grab the latest id and append it to the body
+    // grab the length of my current table, grab that id, and then append it to the body
     this.bugService.add(bug).then(() => {
       response.send("inserted");
     });
