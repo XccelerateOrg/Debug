@@ -70,7 +70,19 @@ class BugService {
   // adding bug
   add(bug) {
     return this.knex(TABLE_NAME)
-      .insert(bug)
+      .max("id")
+      .then((getCount) => {
+        console.log(getCount);
+        let currCount = parseInt(getCount[0].max);
+        console.log(currCount);
+        return currCount;
+      })
+      .then((count) => {
+        let newId = count + 1;
+        bug.id = newId;
+        console.log("adding bug: ", bug);
+        return this.knex(TABLE_NAME).insert(bug);
+      })
       .then(() => {
         console.log("inserted");
       })
@@ -105,12 +117,11 @@ class BugService {
 }
 
 module.exports = BugService;
-// let database = new DebugService(knex);
+// let database = new BugService(knex);
 
 // database.getAll();
 // database.get(1);
 // database.add({
-//   id: 4,
 //   problem: "password authentication",
 //   whatshouldbe: "we should be able to run our queries",
 //   whatactuallyis:
