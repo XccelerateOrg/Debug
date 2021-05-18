@@ -39,7 +39,7 @@ exports.seed = function (knex) {
           hypothesis:
             "you don't have the library connected in the right place",
           plan: "double check where you have to dotenv imports",
-          user_id: 3,
+          user_id: 2,
         },
       ]);
     });

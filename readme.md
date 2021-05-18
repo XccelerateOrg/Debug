@@ -12,6 +12,16 @@ bugs table
 - plan (string)
 - user_id (integer)
 
+Frontend variables
+
+- Create a button for each of the rows
+
+- Form: #debuggingForm
+- input: problem, whatshouldbe, whatactuallyis, hypothesis, plan
+
+- Form: #updateDebuggingForm
+- updateProblem, updateWhatShouldBe,updateWhatActuallyIs,updateHypothesis, updatePlan
+
 ## Purpose :dark_sunglasses:
 
 The purpose of this repository is to create a RESTful application that utilizes
@@ -75,22 +85,23 @@ nodemon app.js
 
 ## Checklist
 
-| Route                              | Method |                     What it does                      | Redirect | Object     |
-| ---------------------------------- | :----: | :---------------------------------------------------: | -------- | ---------- |
-| /api/bugs                          |  GET   |                     Gets all bugs                     |          |            |
-| /api/users/:id/bugs                |  GET   |                  Gets all users bugs                  | bugs     | bugs, user |
-| /api/bugs/:bugId                   |  GET   |                   Gets specific bug                   |          |            |
-| /api/users/:id/bugs/:bugId         |  GET   |                   Gets specific bug                   | bugs     | bugs, user |
-| /api/users/:id/bugs                |  POST  |                       Posts bug                       | bugs     | bugs, user |
-| /api/users/:id/bugs/:bugId         |  PUT   |                       Edits bug                       | bugs     | bugs, user |
-| /api/users/:id/bugs/:bugId         | DELETE |                      Deletes bug                      | bugs     | bugs, user |
-| /api/users                         |  GET   |                    Gets all users                     |          |            |
-| /api/users/:id                     |  GET   |                  Gets specific user                   |          |            |
-| /api/users                         |  POST  |                       Adds user                       | Login    |            |
-| /api/users/:id                     |  PUT   |                      Edits user                       | Home     |            |
-| /login                             |  POST  |                  Login - verify user                  | bugs     | bugs, user |
-| /api/users/:id                     | DELETE |                     Deletes user                      | Home     |            |
-| implement callback for passport js |  get   | Allows us to pass in id into home page via handlebars | Home     | bugs, user |
+| Route                              |     Method     |                     What it does                      | Redirect | Object     |
+| ---------------------------------- | :------------: | :---------------------------------------------------: | -------- | ---------- |
+| Test all service methods           | Test (postman) |       Ensuring that all my queries are correct        |          |            |
+| /api/bugs                          |      GET       |                     Gets all bugs                     |          |            |
+| /api/users/:id/bugs                |      GET       |                  Gets all users bugs                  | bugs     | bugs, user |
+| /api/bugs/:bugId                   |      GET       |                   Gets specific bug                   |          |            |
+| /api/users/:id/bugs/:bugId         |      GET       |                   Gets specific bug                   | bugs     | bugs, user |
+| /api/users/:id/bugs                |      POST      |                       Posts bug                       | bugs     | bugs, user |
+| /api/users/:id/bugs/:bugId         |      PUT       |                       Edits bug                       | bugs     | bugs, user |
+| /api/users/:id/bugs/:bugId         |     DELETE     |                      Deletes bug                      | bugs     | bugs, user |
+| /api/users                         |      GET       |                    Gets all users                     |          |            |
+| /api/users/:id                     |      GET       |                  Gets specific user                   |          |            |
+| /api/users                         |      POST      |                       Adds user                       | Login    |            |
+| /api/users/:id                     |      PUT       |                      Edits user                       | Home     |            |
+| /login                             |      POST      |                  Login - verify user                  | bugs     | bugs, user |
+| /api/users/:id                     |     DELETE     |                     Deletes user                      | Home     |            |
+| implement callback for passport js |      get       | Allows us to pass in id into home page via handlebars | Home     | bugs, user |
 
 http://www.passportjs.org/docs/authenticate/
 
@@ -114,9 +125,9 @@ http://www.passportjs.org/docs/authenticate/
 **ERROR**: :gear:
 **RESOLUTION**: :key:
 
-| Issue                | Where it occurs | Possible solution | Actual solution |
-| -------------------- | :-------------: | :---------------: | :-------------: |
-| Creating a checklist |        H        |       2hrs        |     2.5hrs      |
+| Issue                   |     Where it occurs      | Possible solution |        Actual solution        |
+| ----------------------- | :----------------------: | :---------------: | :---------------------------: |
+| Password authentication | When running my pg files |    PG password    | Not installing hte pg package |
 
 #### What is one thing that I learned from doing this project? :books:
 

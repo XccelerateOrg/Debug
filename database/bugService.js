@@ -9,7 +9,7 @@ const TABLE_NAME = "bugs";
 const development = require("../knexfile").development;
 const knex = require("knex")(development);
 
-class DebugService {
+class BugService {
   constructor(knex) {
     this.knex = knex;
   }
@@ -104,8 +104,32 @@ class DebugService {
   }
 }
 
-let database = new DebugService(knex);
+module.exports = BugService;
+// let database = new DebugService(knex);
 
-database.getAll();
+// database.getAll();
+// database.get(1);
+// database.add({
+//   id: 4,
+//   problem: "password authentication",
+//   whatshouldbe: "we should be able to run our queries",
+//   whatactuallyis:
+//     "we had an error that said we were not authenticated",
+//   hypothesis:
+//     "postgres database -> username and password were not valid",
+//   plan: "google it first - turns out we needed to install pg (thanks JC!) as well as ensure that we hardcode our values into the knexfile.js",
+//   user_id: 1,
+// });
+
+// database.edit(4, {
+//   problem: "dotenv",
+//   whatshouldbe: "we should be able to run our queries",
+//   whatactuallyis:
+//     "cannot run without hardcoding password and username",
+//   hypothesis: "something wrong with dotenv",
+//   plan: "google it first - turns out we needed to install pg (thanks JC!) as well as ensure that we hardcode our values into the knexfile.js",
+//   user_id: 1,
+// });
+// database.delete(4);
 
 // module.exports = DebugService;

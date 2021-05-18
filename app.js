@@ -5,14 +5,21 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 // const expressSession = require("express-session");
 
-var app = express();
-
 const handlebars = require("express-handlebars");
-// authenticate requests
 
-app.use(express.static("assets"));
+// authenticate requests
+const app = express();
+const knexConfig = require("./knexfile")["development"];
+const knex = require("knex")(knexConfig);
+const BugService = require("./database/bugService");
+const BugRoutes = require("./routes/bugRoutes");
+
+let bugService = new BugService(knex);
+let bugRouter = new BugRoutes(bugService);
+
+app.use(express.static("public"));
 app.use(cookieParser());
-app.engine( "handlebars", handlebars() );
+app.engine("handlebars", handlebars());
 
 app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -91,13 +98,13 @@ app.get(
 );
 
 // After user authenticates, redirect to /
-// app.get(
-//   "/auth/facebook/callback",
-//   passportFunctions.authenticate("facebook", {
-//     successRedirect: "/debug",
-//     failureRedirect: "/error",
-//   })
-// );
+app.get(
+  "/auth/facebook/callback",
+  passportFunctions.authenticate("facebook", {
+    successRedirect: "/debug",
+    failureRedirect: "/error",
+  })
+);
 
 app.get("/", (request, response) => {
   response.render("home");
@@ -110,6 +117,8 @@ app.get("/debug", (request, response) => {
 app.get("/error", (request, response) => {
   response.render("error");
 });
+
+app.use("/", bugRouter.router());
 
 app.listen(3000, () => {
   console.log("app listening on port 3000");
