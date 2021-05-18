@@ -3,7 +3,7 @@ const passportFunctions = require("./passport");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const expressSession = require("express-session");
+// const expressSession = require("express-session");
 
 var app = express();
 
@@ -12,21 +12,22 @@ const handlebars = require("express-handlebars");
 
 app.use(express.static("assets"));
 app.use(cookieParser());
-app.engine("handlebars", handlebars());
+app.engine( "handlebars", handlebars() );
+
 app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(
-  // Creating a new session generates a new session id, stores that in a session cookie, and
-  expressSession({
-    secret: "secret",
-    // save the user
-    // if false, will not save session to browser
-    resave: true,
-    // if saveUninitialized is false, session object will not be stored in sesion store
-    saveUninitialized: true,
-  })
-);
+// app.use(
+//   // Creating a new session generates a new session id, stores that in a session cookie, and
+//   expressSession({
+//     secret: "secret",
+//     // save the user
+//     // if false, will not save session to browser
+//     resave: true,
+//     // if saveUninitialized is false, session object will not be stored in sesion store
+//     saveUninitialized: true,
+//   })
+// );
 
 app.use(passportFunctions.initialize());
 //
@@ -97,8 +98,6 @@ app.get(
 //     failureRedirect: "/error",
 //   })
 // );
-
-
 
 app.get("/", (request, response) => {
   response.render("home");

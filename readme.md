@@ -1,3 +1,17 @@
+## Variables
+
+data table
+
+bugs table
+
+- id
+- problem (string)
+- whatshouldbe (string)
+- whatactuallyis (string)
+- hypothesis (string)
+- plan (string)
+- user_id (integer)
+
 ## Purpose :dark_sunglasses:
 
 The purpose of this repository is to create a RESTful application that utilizes
@@ -33,6 +47,19 @@ nodemon app.js
 ```
 
 ### How it works :open_book:
+
+## Planning process
+
+- Postgres - what database looks like
+- Folders that we might need
+  - User interface
+  - Installing packages we might potentially use
+  - Express, express-handlebars, knex, etc.
+  - Migration and seeds (adding in some dummy data)
+  - Body-parser
+  - Create routes -> to see if the application is working
+  - Login / signup (passport.js)
+  - Routes -> /api/users, /api/bugs
 
 ## Checklist
 
@@ -77,7 +104,7 @@ http://www.passportjs.org/docs/authenticate/
 | ----- | ---------------------- | :------: | :------------: | :---------: |
 | x     | This checklist         |    H     |    30 mins     |             |
 |       | Read Documentation     |    M     |    30 mins     |             |
-|       | Look at three examples | 30 mins  |                |
+|       | Look at three examples | 30 mins  |                |             |
 |       | Complete basic example |    M     |    30 mins     |     15      |
 
 ### Daily Stand Up :hourglass:

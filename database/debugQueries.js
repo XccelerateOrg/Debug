@@ -4,17 +4,32 @@
  *
  ***********************************************/
 
-function createBug(bug) {}
+const TABLE_NAME = "debug";
+const knexConfig = require("../knexfile")["development"];
+const knex = require("knex")(knexConfig);
 
-function readBug(id) {}
+class DebugService {
+  constructor(knex) {
+    this.knex = knex;
+  }
+  // getting all bugs
+  getAll() {
+    return this.knex(TABLE_NAME)
+      .select()
+      .then((eachRow) => {
+        console.log(eachRow);
+      });
+  }
+  // getting all of the user's bugs
+  getUsersBugs(id) {}
+  // getting specific bug
+  get(id) {}
+  // adding bug
+  add(bug) {}
+  // deleting bug
+  delete(id) {}
+  // editing bug
+  edit(id, newBug) {}
+}
 
-function editBug(id, newBug) {}
-
-function deleteBug(id) {}
-
-module.exports = {
-  createBug: createBug,
-  readBug: readBug,
-  editBug: editBug,
-  deleteBug: deleteBug,
-};
+module.exports = DebugService;
