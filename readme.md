@@ -1,3 +1,17 @@
+## Purpose :dark_sunglasses:
+
+The purpose of this repository is to create a RESTful application that utilizes
+
+- express-handlebars
+- knex
+- express-basic-auth
+- pg
+- express
+- passport.js
+- dotenv 
+
+### How to run this package
+
 Copy and paste this template into your .env file
 
 - DB_NAME=
@@ -9,6 +23,73 @@ Copy and paste this template into your .env file
 - FACEBOOK_SECRET=
 - GOOGLE_ID=
 - GOOGLE_SECRET=
+
+```
+npm install
+```
+
+```
+nodemon app.js
+```
+
+
+### How it works :open_book:
+
+## Checklist
+
+| User Story                        |   Task   | How it works | Done |
+| --------------------------------- | :------: | :----------: | ---- |
+| Users will be able to signup      |          |              |      |
+| Users will be able to login       | Frontend |              |      |
+| Users will be able to login       | Backend  |              |      |
+| Users will be able to add notes   | Frontend |              |      |
+| Users will be able to edit note   | Backend  |              |      |
+| Users will be able to get notes   | Frontend |              |      |
+| Users will be able to delete note | Backend  |              |      |
+
+## Checklist
+
+| Route                        | Method |     What it does     | Redirect | Object      |
+| ---------------------------- | :----: | :------------------: | -------- | ----------- |
+| /api/notes                   |  GET   |    Gets all notes    |          |             |
+| /api/users/:id/notes         |  GET   | Gets all users notes | notes    | notes, user |
+| /api/notes/:noteId           |  GET   |  Gets specific note  |          |             |
+| /api/users/:id/notes/:noteId |  GET   |  Gets specific note  | notes    | notes, user |
+| /api/users/:id/notes         |  POST  |      Posts note      | notes    | notes, user |
+| /api/users/:id/notes/:noteId |  PUT   |      Edits note      | notes    | notes, user |
+| /api/users/:id/notes/:noteId | DELETE |     Deletes note     | notes    | notes, user |
+| /api/users                   |  GET   |    Gets all users    |          |             |
+| /api/users/:id               |  GET   |  Gets specific user  |          |             |
+| /api/users                   |  POST  |      Adds user       | Login    |             |
+| /api/users/:id               |  PUT   |      Edits user      | Home     |             |
+| /login                       |  POST  | Login - verify user  | Notes    | notes, user |
+| /api/users/:id               | DELETE |     Deletes user     | Home     |             |
+
+### User Stories :telescope:
+
+1. Users will be able to look through the various examples and understand how to test well.
+
+## Sprint :athletic_shoe:
+
+| Done? | Component              | Priority | Estimated Time | Actual Time |
+| ----- | ---------------------- | :------: | :------------: | :---------: |
+| x     | This checklist         |    H     |    30 mins     |             |
+|       | Read Documentation     |    M     |    30 mins     |             |
+|       | Look at three examples | 30 mins  |                |
+|       | Complete basic example |    M     |    30 mins     |     15      |
+
+### Daily Stand Up :hourglass:
+
+## Issues and Resolutions :flashlight:
+
+**ERROR**: :gear:
+**RESOLUTION**: :key:
+
+| Issue                | Where it occurs | Possible solution | Actual solution |
+| -------------------- | :-------------: | :---------------: | :-------------: |
+| Creating a checklist |        H        |       2hrs        |     2.5hrs      |
+
+#### What is one thing that I learned from doing this project? :books:
 
 # Route Names
 
