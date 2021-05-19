@@ -78,10 +78,14 @@ class BugService {
         return currCount;
       })
       .then((count) => {
+        console.log("Can get new id: ", count);
         let newId = count + 1;
-        bug.id = newId;
+        console.log("Can increment by one", newId);
+        console.log(bug);
+        let object = bug.bug;
+        object.id = newId;
         console.log("adding bug: ", bug);
-        return this.knex(TABLE_NAME).insert(bug);
+        return this.knex(TABLE_NAME).insert(object);
       })
       .then(() => {
         console.log("inserted");
@@ -122,7 +126,7 @@ module.exports = BugService;
 // database.getAll();
 // database.get(1);
 // database.add({
-    // id: 4
+// id: 4
 //   problem: "password authentication",
 //   whatshouldbe: "we should be able to run our queries",
 //   whatactuallyis:

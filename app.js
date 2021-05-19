@@ -100,10 +100,26 @@ app.get(
 // After user authenticates, redirect to /
 app.get(
   "/auth/facebook/callback",
-  passportFunctions.authenticate("facebook", {
-    successRedirect: "/debug",
-    failureRedirect: "/error",
-  })
+  function (request, response) {
+    passportFunctions.authenticate(
+      "facebook",
+      function (error, user, info) {
+        if (error) {
+          console.log("error");
+        }
+        if (!user) {
+          response.redirect("/login");
+        }
+        console.log(
+          "Facebook login successful. User:",
+          user
+        );
+        console.log("Information", info);
+        // response.render("debug", {});
+        response.send(user);
+      }
+    );
+  }
 );
 
 app.get("/", (request, response) => {
@@ -113,6 +129,8 @@ app.get("/", (request, response) => {
 app.get("/debug", (request, response) => {
   response.render("debug");
 });
+
+// app.get("/debug", passport.authenticate(""))
 
 app.get("/error", (request, response) => {
   response.render("error");

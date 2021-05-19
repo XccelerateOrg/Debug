@@ -34,49 +34,61 @@ $(() => {
 
   // get route
   // GET: /api/users/:userId/bugs
-  axios
-    .get(`api/users/2/bugs`)
-    .then((object) => {
-      console.log(object.data);
-      loadBugs(object.data);
-      //   loadBugs(object);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  function getNotes() {
+    axios
+      .get(`api/bugs`)
+      .then((object) => {
+        // console.log(object.data);
+        loadBugs(object.data);
+        //   loadBugs(object);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  getNotes();
 
   // post route
   // /api/bugs
-  //   $("#debuggingForm").submit((event) => {
-  //     event.preventDefault();
-  //     console.log($("input[name=problem]").val());
-  //     let problem = $("input[name=problem]").val();
-  //     console.log("Problem", problem);
-  //     let whatshouldbe = $("input[name=whatshouldbe]").val();
-  //     let whatactuallyis = $(
-  //       "input[name=whatactuallyis]"
-  //     ).val();
-  //     let hypothesis = $("input[name=hypothesis]").val();
-  //     let plan = $("input[name=plan]").val();
-  //     let debuggingObject = {
-  //       problem: problem,
-  //       whatshouldbe: whatshouldbe,
-  //       whatactuallyis: whatactuallyis,
-  //       hypothesis: hypothesis,
-  //       plan: plan,
-  //     };
-  //     console.log("New Debugging Object", debuggingObject);
-  //     axios
-  //       .post(`/api/bugs`, {
-  //         bug: debuggingObject,
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //       })
-  //       .catch((error) => {
-  //         console.log("Error", error);
-  //       });
-  //   });
+  $("#debuggingForm").submit((event) => {
+    event.preventDefault();
+    console.log("Someone submitting something");
+    // console.log($("input[name=problem]").val());
+    let problem = $("input[name=problem]").val();
+    // console.log("Problem", problem);
+    let whatshouldbe = $("input[name=whatshouldbe]").val();
+    let whatactuallyis = $(
+      "input[name=whatactuallyis]"
+    ).val();
+    let hypothesis = $("input[name=hypothesis]").val();
+    let plan = $("input[name=plan]").val();
+    let debuggingObject = {
+      problem: problem,
+      whatshouldbe: whatshouldbe,
+      whatactuallyis: whatactuallyis,
+      hypothesis: hypothesis,
+      plan: plan,
+      // user_id here
+    };
+    console.log("New Debugging Object", debuggingObject);
+    axios
+      .post(`/api/bugs`, {
+        bug: debuggingObject,
+      })
+      .then(() => {
+        console.log("posted");
+        axios.get(`api/bugs`).then((object) => {
+          console.log(object.data);
+          loadBugs(object.data);
+          //   loadBugs(object);
+        });
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  });
+
+  // axios.put("/api/bugs")
 
   // edit route
   // /api/bugs/:id
