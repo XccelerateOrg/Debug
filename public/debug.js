@@ -18,28 +18,28 @@ $(() => {
             </td>
             <td>{{plan}}</td>
              <td>
-              <button type="submit" data-id="{{id}}" class="delete"> Delete </button>
+              <button type="submit" data-id="{{id}}" class="delete btn btn-outline-dark waves-effect"> Delete </button>
             </td>
              
           </tr>
 {{/each}}`);
-  // this works
+  /**********************************************
+   * Given an array of data, will input into bug template and load accordingly
+   * ==================================
+   ***********************************************/
   const loadBugs = (data) => {
-    // console.log("received data", data);
-    // let template = bugTemplate({ bug: data });
-    // console.log("Template generated: ", template);
     $("#tableBody").html(bugTemplate({ bug: data }));
   };
 
-  // get route
-  // GET: /api/users/:userId/bugs
+  /**********************************************
+   * Get notes -
+   * ==================================
+   ***********************************************/
   function getNotes() {
     axios
       .get(`api/bugs`)
       .then((object) => {
-        // console.log(object.data);
         loadBugs(object.data);
-        //   loadBugs(object);
       })
       .catch((error) => {
         console.log(error);
@@ -47,8 +47,10 @@ $(() => {
   }
   getNotes();
 
-  // post route
-  // /api/bugs
+  /**********************************************
+   *
+   * ==================================
+   ***********************************************/
   $("#debuggingForm").submit((event) => {
     event.preventDefault();
 
@@ -71,6 +73,10 @@ $(() => {
       // user_id here
     };
     console.log("New Debugging Object", debuggingObject);
+    /**********************************************
+     *
+     * ==================================
+     ***********************************************/
     axios
       .post(`/api/bugs`, {
         bug: debuggingObject,
@@ -83,14 +89,10 @@ $(() => {
         console.log("Error", error);
       });
   });
-
-  /**
-   * #TODO: trying to console.log something from the debugging table
-   */
-  // on click, for eachRow
-  // grab all the columns
-
-  // put it back into the
+  /**********************************************
+   *
+   * ==================================
+   ***********************************************/
   $("#debuggingTable").on(
     "click",
     ".eachRow",
@@ -132,6 +134,10 @@ $(() => {
       $("#updateDebuggingForm").data("bugid", bugId);
     }
   );
+  /**********************************************
+   *
+   * ==================================
+   ***********************************************/
   $("#updateDebuggingForm").submit((event) => {
     event.preventDefault();
     console.log("Pressed on update form");
@@ -180,6 +186,10 @@ $(() => {
     $(this).find(".clear").click();
   });
 
+  /**********************************************
+   *
+   * ==================================
+   ***********************************************/
   $("#tableBody").on("click", ".delete", function (event) {
     let id = $(event.currentTarget).data().id;
     console.log("Bug id to delete:", id);
@@ -193,11 +203,4 @@ $(() => {
         console.log("error", error);
       });
   });
-  // axios.put("/api/bugs")
-
-  // edit route
-  // /api/bugs/:id
-
-  // delete route
-  // /api/bugs/:id
 });
