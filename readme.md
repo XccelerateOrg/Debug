@@ -1,5 +1,7 @@
 ## Variables
 
+- grab the id and then input it into the table
+
 data table
 
 bugs table
