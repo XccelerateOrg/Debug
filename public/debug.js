@@ -180,6 +180,19 @@ $(() => {
     $(this).find(".clear").click();
   });
 
+  $("#tableBody").on("click", ".delete", function (event) {
+    let id = $(event.currentTarget).data().id;
+    console.log("Bug id to delete:", id);
+    axios
+      .delete(`/api/bugs/${id}`)
+      .then(() => {
+        console.log("deleted");
+        getNotes();
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  });
   // axios.put("/api/bugs")
 
   // edit route
